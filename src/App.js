@@ -19,16 +19,16 @@ function App() {
     window.localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  const deleteCompletedTodos = useCallback((id) => {
+  const deleteCompletedTodos = (id) => {
     setTodos(newTodos => newTodos.filter(item => item.id !== id));
-  }, []);
+  };
 
-  const handleCheckbox = (id) => {
+  const handleCheckbox = useCallback((id) => {
     const completedTodo = todos.find(item => item.id === id);
 
     completedTodo.completed = !completedTodo.completed;
     window.localStorage.setItem('todos', JSON.stringify(todos));
-  };
+  }, [todos]);
 
   const handleEditChanges = (id, title) => {
     const changedTodo = todos.find(item => item.id === id);

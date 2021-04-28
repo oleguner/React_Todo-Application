@@ -25,6 +25,7 @@ export const TodoItem = ({
 
   const handleKeyPress = (keyEvent) => {
     const li = keyEvent.currentTarget.closest('li');
+    const todoText = todo.title;
 
     if (keyEvent.key === 'Escape' || keyEvent.key === 'Esc') {
       li.classList.remove('editing');
@@ -32,6 +33,13 @@ export const TodoItem = ({
     }
 
     if (keyEvent.key === 'Enter') {
+      if (title.length === 0) {
+        setTitle(todoText);
+        li.className = '';
+
+        return;
+      }
+
       setTitle(title);
       handleEditChanges(todo.id, title);
       li.classList.remove('editing');

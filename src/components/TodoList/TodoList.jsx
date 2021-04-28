@@ -25,17 +25,17 @@ export const TodoList = ({
   }, [sortedTodo, todos]);
 
   const sortTodos = (event) => {
-    const item = event.target;
+    const buttom = event.target;
 
-    if (item.name === 'All') {
+    if (buttom.name === 'All') {
       setSortedTodo('All');
     }
 
-    if (item.name === 'Active') {
+    if (buttom.name === 'Active') {
       setSortedTodo('Active');
     }
 
-    if (item.name === 'Completed') {
+    if (buttom.name === 'Completed') {
       setSortedTodo('Completed');
     }
   };
@@ -55,7 +55,7 @@ export const TodoList = ({
           ))}
       </ul>
 
-      {notes.length > 0
+      {todos.length > 0
         && (
         <TodosFilter
           length={todos.length}
