@@ -11,59 +11,56 @@ export const TodoList = ({
   onChange,
   handleEditChanges,
 }) => {
-  const [sortedTodo, setSortedTodo] = useState('All');
+  const [sortedTodos, setSortedTodos] = useState('All');
   const [notes, setNotes] = useState(todos);
 
   useEffect(() => {
-    if (sortedTodo === 'All') {
+    if (sortedTodos === 'All') {
       setNotes(todos);
-    } else if (sortedTodo === 'Active') {
+    } else if (sortedTodos === 'Active') {
       setNotes(todos.filter(it => it.completed === false));
     } else {
       setNotes(todos.filter(it => it.completed === true));
     }
-  }, [sortedTodo, todos]);
+  }, [sortedTodos, todos]);
 
   const sortTodos = (event) => {
     const buttom = event.target;
 
     if (buttom.name === 'All') {
-      setSortedTodo('All');
+      setSortedTodos('All');
     }
 
     if (buttom.name === 'Active') {
-      setSortedTodo('Active');
+      setSortedTodos('Active');
     }
 
     if (buttom.name === 'Completed') {
-      setSortedTodo('Completed');
+      setSortedTodos('Completed');
     }
   };
 
   return (
     <>
       <ul className="todo-list">
-        {notes
-          && notes.map(todo => (
-            <TodoItem
-              key={todo.id}
-              onDelete={onDelete}
-              onChange={onChange}
-              handleEditChanges={handleEditChanges}
-              todo={todo}
-            />
-          ))}
+        {notes && notes.map(todo => (
+          <TodoItem
+            key={todo.id}
+            onDelete={onDelete}
+            onChange={onChange}
+            handleEditChanges={handleEditChanges}
+            todo={todo}
+          />
+        ))}
       </ul>
 
-      {todos.length > 0
-        && (
+      {todos.length > 0 && (
         <TodosFilter
           length={todos.length}
           sortTodos={sortTodos}
           clearing={handleClearing}
         />
-        )
-      }
+      )}
 
     </>
   );

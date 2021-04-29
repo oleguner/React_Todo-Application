@@ -1,5 +1,5 @@
 # React ToDo App
-- Replace `<your_account>` with your Github username in the [DEMO LINK](git@github.com:oleguner/React_Todo-Application.git)
+[DEMO LINK](https://oleguner.github.io/React_Todo-Application/)
 
 ## Description
 Implemented simple [TODO app](http://todomvc.com/examples/vanillajs/) working as described below but works on react.
